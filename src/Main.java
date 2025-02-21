@@ -8,5 +8,8 @@ public class Main {
 
     System.out.println("\nTask 2 \n");
     lesson1.checkSumSign();
+
+    System.out.println("\nTask 3 \n");
+    lesson1.printColor();
   }
 }
