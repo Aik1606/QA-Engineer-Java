@@ -38,7 +38,8 @@ public class Main {
     System.out.println("\nTask 10 \n");
     System.out.println(Arrays.toString(lesson1.arrayXor()));
 
-
+    System.out.println("\nTask 11 \n");
+    System.out.println(Arrays.toString(lesson1.arrayFill()));
 
   }
 }
