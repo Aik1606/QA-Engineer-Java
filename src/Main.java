@@ -27,5 +27,8 @@ public class Main {
     System.out.println("\nTask 7 \n");
     System.out.println(lesson1.isPositive(6));
     System.out.println(lesson1.isPositive(-2));
+
+    System.out.println("\nTask 8 \n");
+    lesson1.repeat("hello ", 3);
   }
 }

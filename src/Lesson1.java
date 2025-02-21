@@ -74,10 +74,20 @@ public class Lesson1 {
   }
 
   /**
-   * task6
+   * task7
    */
   public boolean isPositive(int value) {
 
     return value >= 0;
+  }
+
+  /**
+   * task8
+   */
+  public void repeat(String string, int times) {
+
+    for (int i = 0; i < times; ++i) {
+      System.out.printf("%s", string);
+    }
   }
 }
