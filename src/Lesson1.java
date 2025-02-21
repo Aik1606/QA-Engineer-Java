@@ -51,4 +51,13 @@ public class Lesson1 {
       System.out.println("a >= b");
     }
   }
+
+  /**
+   * task5
+   */
+  public boolean compare(int left, int right) {
+    int sum = left + right;
+
+    return sum >= 10 && sum <= 20;
+  }
 }

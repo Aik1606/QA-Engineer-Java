@@ -14,5 +14,10 @@ public class Main {
 
     System.out.println("\nTask 4 \n");
     lesson1.compareNumbers();
+
+    System.out.println("\nTask 5 \n");
+    System.out.println(lesson1.compare(6, 8));
+    System.out.println(lesson1.compare(13, 16));
+
   }
 }
