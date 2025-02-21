@@ -60,4 +60,16 @@ public class Lesson1 {
 
     return sum >= 10 && sum <= 20;
   }
+
+  /**
+   * task6
+   */
+  public void checkNumber(int value) {
+
+    if (value < 0) {
+      System.out.println("Число отрицательное");
+    } else {
+      System.out.println("Число положительное");
+    }
+  }
 }

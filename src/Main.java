@@ -19,5 +19,10 @@ public class Main {
     System.out.println(lesson1.compare(6, 8));
     System.out.println(lesson1.compare(13, 16));
 
+    System.out.println("\nTask 6 \n");
+    lesson1.checkNumber(6);
+    lesson1.checkNumber(-2);
+    lesson1.checkNumber(0);
+
   }
 }
