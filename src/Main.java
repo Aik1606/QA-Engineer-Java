@@ -24,5 +24,8 @@ public class Main {
     lesson1.checkNumber(-2);
     lesson1.checkNumber(0);
 
+    System.out.println("\nTask 7 \n");
+    System.out.println(lesson1.isPositive(6));
+    System.out.println(lesson1.isPositive(-2));
   }
 }

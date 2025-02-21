@@ -72,4 +72,12 @@ public class Lesson1 {
       System.out.println("Число положительное");
     }
   }
+
+  /**
+   * task6
+   */
+  public boolean isPositive(int value) {
+
+    return value >= 0;
+  }
 }
