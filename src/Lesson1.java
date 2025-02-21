@@ -90,4 +90,13 @@ public class Lesson1 {
       System.out.printf("%s", string);
     }
   }
+
+  /**
+   * task9
+   */
+  public boolean isLeapYear(int year) {
+
+    return year % 4 == 0 && (year % 400 == 0 || year % 100 != 0);
+
+  }
 }

@@ -30,5 +30,11 @@ public class Main {
 
     System.out.println("\nTask 8 \n");
     lesson1.repeat("hello ", 3);
+
+    System.out.println("\nTask 9 \n");
+    System.out.println(lesson1.isLeapYear(300));
+
+
+
   }
 }
