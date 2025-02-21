@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Lesson1 {
   /**
    * task1
@@ -147,6 +149,16 @@ public class Lesson1 {
     for (int i = 0; i < arr.length; ++i) {
         arr[i][i] = 1;
     }
+    return arr;
+  }
+
+  /**
+   * task14
+   */
+  public int[] arrayMake(int len, int initialValue) {
+    int [] arr = new int[len];
+
+    Arrays.fill(arr, initialValue);
     return arr;
   }
 }

@@ -47,5 +47,7 @@ public class Main {
     System.out.println("\nTask 13 \n");
     System.out.println(Arrays.deepToString(lesson1.arrayDiag()));
 
+    System.out.println("\nTask 14 \n");
+    System.out.println(Arrays.toString(lesson1.arrayMake(5, 6)));
   }
 }
