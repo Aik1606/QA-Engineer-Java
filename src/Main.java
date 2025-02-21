@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Main {
   public static void main(String[] args) {
@@ -33,6 +34,9 @@ public class Main {
 
     System.out.println("\nTask 9 \n");
     System.out.println(lesson1.isLeapYear(300));
+
+    System.out.println("\nTask 10 \n");
+    System.out.println(Arrays.toString(lesson1.arrayXor()));
 
 
 
