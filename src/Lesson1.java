@@ -107,7 +107,7 @@ public class Lesson1 {
     int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
 
     for (int i = 0; i < arr.length; ++i) {
-      arr[i] ^=1;
+      arr[i] ^= 1;
     }
     return arr;
   }
@@ -124,8 +124,8 @@ public class Lesson1 {
     return arr;
   }
 
- /**
-      * task12
+  /**
+   * task12
    */
   public int[] arrayMulti() {
     int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
@@ -138,5 +138,16 @@ public class Lesson1 {
     return arr;
   }
 
+  /**
+   * task13
+   */
+  public int[][] arrayDiag() {
+    int[][] arr = new int [4][4];
 
+    for (int i = 0; i < arr.length; ++i) {
+        arr[i][i] = 1;
+    }
+    return arr;
+  }
 }
+
