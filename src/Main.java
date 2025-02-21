@@ -11,5 +11,8 @@ public class Main {
 
     System.out.println("\nTask 3 \n");
     lesson1.printColor();
+
+    System.out.println("\nTask 4 \n");
+    lesson1.compareNumbers();
   }
 }
