@@ -23,6 +23,6 @@ public class Product {
   }
 
   public String toString() {
-    return String.format("Name: %s\nDate: %s\nFabricator: %s\nCountry: %s\nCost: %d\nIs Reserved: %b\n",this.name,this.date, this.fabricator,this.country, this.cost, this.isReserved);
+    return String.format("{\n  Name: %s\n  Date: %s\n  Fabricator: %s\n  Country: %s\n  Cost: %d\n  Is Reserved: %b\n}\n",this.name,this.date, this.fabricator,this.country, this.cost, this.isReserved);
   }
 }
