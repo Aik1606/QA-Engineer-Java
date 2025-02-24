@@ -15,8 +15,15 @@ public class Main {
         productArray[2] = new Product("Метла2", "14.02.2024","ООО На-На-На", "Россия", 400, false);
         productArray[3] = new Product("Метла3", "15.02.2024","ООО Пошла", "Казахстан", 350, false);
         productArray[4] = new Product("Метла4", "16.02.2024","ИП Карасев", "СССР", 300, true);
+        System.out.println(Arrays.toString(productArray));
 
-    System.out.println(Arrays.toString(productArray));
+        //Task 3
+        Park park = new Park("ДиснейЛэнд", new Park.Attraction[]{
+            new Park.Attraction("Горки", "10 - 22", 300),
+            new Park.Attraction("Карусель", "10 - 21", 250),
+            new Park.Attraction("Комната смеха", "11 - 21", 350),
+        });
+        System.out.println(park);
     }
 }
 
