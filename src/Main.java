@@ -1,15 +1,25 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+  public static void main(String[] args) {
+  Animal cat = new Cat ("Барсик");
+  cat.run(120);
+  cat.run(-3);
+  cat.run(500);
+  cat.swim(100);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+  System.out.printf("Создано %d животных%n", Animal.getCount());
+
+  Animal dog = new Dog("Ибрагим");
+  dog.run(450);
+  dog.run(550);
+  dog.run(-1);
+  dog.swim(5);
+  dog.swim(10);
+  dog.swim(-1);
+
+    System.out.printf("Создано %d животных%n", Animal.getCount());
+    Animal.count = 666;
+
+  }
 }
