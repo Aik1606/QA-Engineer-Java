@@ -2,14 +2,12 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Figure triangle = new Triangle(3.9, 5.0, 7.9, "green", "blue");
+        Figure rectangle = new Rectangle(3.9, 5.0, "orange", "red");
+        Figure circle = new Circle(34,  "black", "pink");
+        System.out.println(circle.getFillColor());
+        System.out.println(circle.getArea());
+        System.out.println(circle.getPerimeter());
+        System.out.println(circle.getBoundaryColor());
     }
 }
