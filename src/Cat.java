@@ -1,6 +1,18 @@
 public class Cat extends Animal {
-  public Cat(String name) {
+  int wantFood;
+
+  public Cat(String name, int wantFood) {
     super(name);
+
+    this.wantFood = wantFood;
+  }
+
+  public void eat(CapFood capFood) {
+    wantFood -= capFood.decrease(wantFood);
+  }
+
+  public boolean isFullFilled()  {
+    return this.wantFood == 0;
   }
 
   @Override
