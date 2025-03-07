@@ -2,8 +2,32 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-    String[][] myArr = {new String[4], new String[4], new String[5], new String[4]};
-    firstExercise(myArr);
+        //String[][] myArr = {new String[4], new String[4], new String[5], new String[4]};
+        //firstExercise(myArr);
+        String[][] myArr = {
+            {"2", "3", "4", "12"},
+            {"2", "1", "h", "0"},
+            {"-3", "1", "123", "12"},
+            {"2", "3", "4", "1"}
+        };
+        firstExercise(myArr);
+    }
+
+
+    private static void secondExercise(String[][] array) {
+        int total = 0;
+        for (int rowIndex =0; rowIndex < array.length; rowIndex++) {
+            for (int colIndex = 0; colIndex < array[rowIndex].length; colIndex++) {
+               String value = array[rowIndex][colIndex];
+               try {
+                   total += Integer.parseInt(value);
+               } catch (NumberFormatException e) {
+                   throw new MyArrayDataException("в ячейке ["+rowIndex+"]["+colIndex+"] лежат неверные данные");
+               }
+
+            }
+        }
+        System.out.println("Сумма всех чисел равна " + total);
     }
 
     private static void firstExercise(String[][] array) {
@@ -19,5 +43,6 @@ public class Main {
                 throw new MyArraySizeException("размер не равен 4x4");
             }
         }
+      secondExercise(array);
     }
 }
