@@ -2,15 +2,24 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //String[][] myArr = {new String[4], new String[4], new String[5], new String[4]};
-        //firstExercise(myArr);
-        String[][] myArr = {
+        String[][] myArr = {new String[4], new String[4], new String[5], new String[4]};
+        try {
+            firstExercise(myArr);
+        } catch (MyArraySizeException e) {
+            System.out.println("Произошла ошибка MyArraySizeException '" + e.getMessage()+ "'");
+        }
+
+        String[][] myArr2 = {
             {"2", "3", "4", "12"},
             {"2", "1", "h", "0"},
             {"-3", "1", "123", "12"},
             {"2", "3", "4", "1"}
         };
-        firstExercise(myArr);
+        try {
+            firstExercise(myArr2);
+        } catch (MyArrayDataException e) {
+            System.out.println("Произошла ошибка MyArrayDataException '" + e.getMessage()+ "'");
+        }
     }
 
 
