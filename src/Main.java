@@ -1,3 +1,5 @@
+import java.lang.ArrayIndexOutOfBoundsException;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -20,6 +22,13 @@ public class Main {
         } catch (MyArrayDataException e) {
             System.out.println("Произошла ошибка MyArrayDataException '" + e.getMessage()+ "'");
         }
+       try {
+           System.out.println(myArr[6]);
+       } catch (ArrayIndexOutOfBoundsException e) {
+           System.out.println("Произошла ошибка ArrayIndexOutOfBoundsException '" + e.getMessage()+ "'");
+       }
+
+
     }
 
 
