@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,11 +21,14 @@ class MainTest1 {
   void setUp() {
     driver.manage().window().maximize();
     driver.get("https://www.mts.by/");
-    driver.findElement(By.id("cookie-agree")).click();
+    List<WebElement> cookie = driver.findElements(By.id("cookie-agree"));
+    if (!cookie.isEmpty()) {
+      cookie.get(0).click();
+    }
   }
 
   @AfterEach
   void tearDown() {
-    driver.quit();
+    //driver.quit();
   }
 }

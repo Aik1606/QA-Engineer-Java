@@ -50,4 +50,10 @@ public class MainTest extends MainTest1 {
     wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
     Assertions.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
   }
+
+  @Test
+  public void someInfo() {
+    OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
+    page.selectServiceOption("Рассрочка");
+  }
 }
