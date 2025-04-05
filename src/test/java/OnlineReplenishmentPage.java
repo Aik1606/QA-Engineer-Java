@@ -20,6 +20,9 @@ public class OnlineReplenishmentPage {
   By connectionSum = By.id("connection-sum");
   By connectionEmail = By.id("connection-email");
 
+  By continueButton = By.xpath("//*[@id=\"pay-connection\"]/button");
+  By connectionForm = By.id("pay-connection");
+
   //домашний интернет
   By internetPhone = By.id("internet-phone");
   By internetSum = By.id("internet-sum");
@@ -98,5 +101,30 @@ public String getArrearsScorePlaceholder() {
     return getPlaceholderInInput(emailArrears);
   }
 
+// заполняем номер телефона
+  public OnlineReplenishmentPage fillPhoneNumberField(String phoneNumber) {
+    WebElement field = root.findElement(connectionPhone);
+    field.sendKeys(phoneNumber);
+    return this;
+  }
+
+  public OnlineReplenishmentPage fillSumField(String summa) {
+    root.findElement(connectionSum).sendKeys(summa);
+    return this;
+  }
+
+  public OnlineReplenishmentPage submitReplenishmentForm() {
+    root.findElement(connectionForm).submit();
+    return this;
+  }
+
+  public PaymentConformationPage getPaymentConformationPage() {
+    By locator = By.xpath("//iframe[@src='https://checkout.bepaid.by/widget_v2/index.html']");
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    driver.switchTo().frame(driver.findElement(locator));
+    return new PaymentConformationPage(driver);
+  }
 }
 

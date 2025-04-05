@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.junit.jupiter.api.Nested;
 
+
 public class MainTest extends BaseTest{
 
     private static final Logger log = LoggerFactory.getLogger(MainTest.class);
@@ -53,6 +54,34 @@ public class MainTest extends BaseTest{
     Assertions.assertEquals("Сумма", page.getArrearsSumPlaceholder());
     Assertions.assertEquals("Номер счета на 2073", page.getArrearsScorePlaceholder());
   }
+
+
+  //услуги связи заполнение формы
+
+  @Test
+  public void checkCommunicationServices1() {
+    OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
+    PaymentConformationPage conformationPage = page
+        .selectServiceOption("Услуги связи")
+        .fillPhoneNumberField("297777777")
+        .fillSumField("10")
+        .submitReplenishmentForm().getPaymentConformationPage();
+
+   Assertions.assertTrue(conformationPage.getPayDescriptionCost().contains("10"));
+   Assertions.assertTrue(conformationPage.getSubmitButtonText().contains("10"));
+   Assertions.assertTrue(conformationPage.getPayDescriptionText().contains("375297777777"));
+   Assertions.assertNotNull(conformationPage.getVisaIcon());
+   Assertions.assertNotNull(conformationPage.getMaestroIcon());
+   Assertions.assertNotNull(conformationPage.getMaterCardIcon());
+   Assertions.assertNotNull(conformationPage.getBelkartIcon());
+   Assertions.assertNotNull(conformationPage.getMirIcon());
+   Assertions.assertEquals("Номер карты", conformationPage.getCardNumberPlaceholderText());
+   Assertions.assertEquals("Срок действия", conformationPage.getDatePlaceholderText());
+   Assertions.assertEquals("CVC", conformationPage.getCvcPlaceholderText());
+   Assertions.assertEquals("Имя держателя (как на карте)", conformationPage.getHolderNamePlaceholderText());
+
+  }
+
 }
 
 

@@ -20,11 +20,12 @@ class BaseTest {
     driver.get("https://www.mts.by/");
 
     WebElement cookie = driver.findElement(By.id("cookie-agree"));
-    cookie.click();
+    //cookie.click();
+
   }
 
   @AfterEach
   void tearDown() {
-    driver.quit();
+    //driver.quit();
   }
 }
