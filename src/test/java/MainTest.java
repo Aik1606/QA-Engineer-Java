@@ -1,14 +1,16 @@
+
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 public class MainTest extends BaseTest {
 
-    private static final Logger log = LoggerFactory.getLogger(MainTest.class);
+
 
     //рассрочка
+    @Description("Расрочка")
     @Test
     public void checkPlaceholdersForInstalment() {
         OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
@@ -20,7 +22,7 @@ public class MainTest extends BaseTest {
     }
 
     //услуги связи
-
+    @Epic("Task 1")
     @Test
     public void checkCommunicationServices() {
         OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
@@ -32,6 +34,7 @@ public class MainTest extends BaseTest {
     }
 
     //дом интернет
+    @Step("Шаг 3")
     @Test
     public void checkHomeInternet() {
         OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
@@ -43,7 +46,7 @@ public class MainTest extends BaseTest {
     }
 
     //задолженность
-
+    @Severity(SeverityLevel.NORMAL)
     @Test
     public void checkArrears() {
         OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
@@ -56,7 +59,8 @@ public class MainTest extends BaseTest {
 
 
     //услуги связи заполнение формы
-
+    @Description("Услуги связи")
+    @Epic("Task 1")
     @Test
     public void checkCommunicationServices1() {
         String payConst = "123";
