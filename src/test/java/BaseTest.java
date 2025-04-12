@@ -1,29 +1,17 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import io.restassured.RestAssured;
+import org.testng.annotations.BeforeClass;
 
 
-class BaseTest {
-  WebDriver driver = new ChromeDriver();
+public class BaseTest {
 
-  @BeforeEach
-  void setUp() {
-    driver.manage().window().maximize();
-    driver.get("https://www.mts.by/");
-
-    WebElement cookie = driver.findElement(By.id("cookie-agree"));
-
-    if (cookie.isDisplayed()) {
-      cookie.click();
-    }
-
+  @BeforeClass
+  public void someTest() {
+    RestAssured.baseURI = "https://postman-echo.com";
   }
 
-  @AfterEach
-  void tearDown() {
-    driver.quit();
-  }
+
 }
+
+
+
+

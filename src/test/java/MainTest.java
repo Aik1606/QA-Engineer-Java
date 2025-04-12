@@ -1,88 +1,107 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.restassured.http.ContentType;
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 
 public class MainTest extends BaseTest {
+  @Test
+  public void testGet() {
+    given()
+        .param("foo1", "bar1")
+        .param("foo2", "bar2")
+        .when()
+        .get("/get")
+        .then()
+        .statusCode(200)
+        .body("args.foo1", equalTo("bar1"))
+        .body("args.foo2", equalTo("bar2"))
+        .body("headers.x-forwarded-proto", equalTo("https"))
+        .body("url", equalTo("https://postman-echo.com/get?foo1=bar1&foo2=bar2"));
+  }
 
-    private static final Logger log = LoggerFactory.getLogger(MainTest.class);
+  // post
+  @Test
+  public void testPostRawText() {
+    String textData = "This is a raw text payload for testing Postman Echo";
 
-    //рассрочка
-    @Test
-    public void checkPlaceholdersForInstalment() {
-        OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
-        page.selectServiceOption("Рассрочка");
+    given()
+        .contentType(ContentType.TEXT)
+        .body(textData)
+        .when()
+        .post("/post")
+        .then()
+        .statusCode(200)
+        .body("data", equalTo(textData))
+        .body("headers.content-type", containsString("text/plain"))
+        .body("url", equalTo("https://postman-echo.com/post"));
+  }
 
-        Assertions.assertEquals("E-mail для отправки чека", page.getEmailInstalmentPlaceholder());
-        Assertions.assertEquals("Сумма", page.getSumIInstalmentPlaceholder());
-        Assertions.assertEquals("Номер счета на 44", page.getScoreInstalmentPlaceholder());
-    }
+  @Test
+  public void testPostFormData() {
+    given()
+        .contentType(ContentType.MULTIPART)
+        .multiPart("foo1", "bar1")
+        .multiPart("foo2", "bar2")
+        .when()
+        .post("/post")
+        .then()
+        .statusCode(200)
+        .body("form.foo1", equalTo("bar1"))
+        .body("form.foo2", equalTo("bar2"))
+        .body("headers.x-forwarded-proto", equalTo("https"))
+        .body("headers.content-type", containsString("multipart/form-data"))
+        .body("url", equalTo("https://postman-echo.com/post"));
+  }
 
-    //услуги связи
+  @Test
+  public void testPut() {
+    String textData = "This is a raw text payload for testing Postman Echo";
 
-    @Test
-    public void checkCommunicationServices() {
-        OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
-        page.selectServiceOption("Услуги связи");
+    given()
+        .contentType(ContentType.TEXT)
+        .body(textData)
+        .when()
+        .put("/put")
+        .then()
+        .statusCode(200)
+        .body("data", equalTo(textData))
+        .body("headers.content-type", containsString("text/plain"))
+        .body("url", equalTo("https://postman-echo.com/put"));
+  }
 
-        Assertions.assertEquals("E-mail для отправки чека", page.getConnectionEmailPlaceholder());
-        Assertions.assertEquals("Сумма", page.getConnectionSumPlaceholder());
-        Assertions.assertEquals("Номер телефона", page.getConnectionPhonePlaceholder());
-    }
+  @Test
+  public void testPatch() {
+    String textData = "This is a raw text payload for testing Postman Echo";
 
-    //дом интернет
-    @Test
-    public void checkHomeInternet() {
-        OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
-        page.selectServiceOption("Домашний интернет");
+    given()
+        .contentType(ContentType.TEXT)
+        .body(textData)
+        .when()
+        .patch("/patch")
+        .then()
+        .statusCode(200)
+        .body("data", equalTo(textData))
+        .body("headers.content-type", containsString("text/plain"))
+        .body("url", equalTo("https://postman-echo.com/patch"));
+  }
 
-        Assertions.assertEquals("E-mail для отправки чека", page.getInternetEmailPlaceholder());
-        Assertions.assertEquals("Сумма", page.getInternetSumPlaceholder());
-        Assertions.assertEquals("Номер абонента", page.getInternetPhonePlaceholder());
-    }
+  @Test
+  public void testDelete() {
+    String textData = "This is a raw text payload for testing Postman Echo";
 
-    //задолженность
-
-    @Test
-    public void checkArrears() {
-        OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
-        page.selectServiceOption("Задолженность");
-
-        Assertions.assertEquals("E-mail для отправки чека", page.getArrearsEmailPlaceholder());
-        Assertions.assertEquals("Сумма", page.getArrearsSumPlaceholder());
-        Assertions.assertEquals("Номер счета на 2073", page.getArrearsScorePlaceholder());
-    }
-
-
-    //услуги связи заполнение формы
-
-    @Test
-    public void checkCommunicationServices1() {
-        String payConst = "123";
-        OnlineReplenishmentPage page = new OnlineReplenishmentPage(driver);
-        PaymentConformationPage conformationPage = page
-                .selectServiceOption("Услуги связи")
-                .fillPhoneNumberField("297777777")
-                .fillSumField(payConst)
-                .submitReplenishmentForm()
-                .getPaymentConformationPage();
-
-        Assertions.assertTrue(conformationPage.getPayDescriptionCost().contains(payConst));
-        Assertions.assertTrue(conformationPage.getSubmitButtonText().contains(payConst));
-        Assertions.assertTrue(conformationPage.getPayDescriptionText().contains("375297777777"));
-        Assertions.assertNotNull(conformationPage.getVisaIcon());
-        Assertions.assertNotNull(conformationPage.getMaestroIcon());
-        Assertions.assertNotNull(conformationPage.getMaterCardIcon());
-        Assertions.assertNotNull(conformationPage.getBelkartIcon());
-        Assertions.assertNotNull(conformationPage.getMirIcon());
-        Assertions.assertEquals("Номер карты", conformationPage.getCardNumberPlaceholderText());
-        Assertions.assertEquals("Срок действия", conformationPage.getDatePlaceholderText());
-        Assertions.assertEquals("CVC", conformationPage.getCvcPlaceholderText());
-        Assertions.assertEquals("Имя держателя (как на карте)", conformationPage.getHolderNamePlaceholderText());
-
-    }
-
+    given()
+        .contentType(ContentType.TEXT)
+        .body(textData)
+        .when()
+        .delete("/delete")
+        .then()
+        .statusCode(200)
+        .body("data", equalTo(textData))
+        .body("headers.content-type", containsString("text/plain"))
+        .body("url", equalTo("https://postman-echo.com/delete"));
+  }
 }
 
 
